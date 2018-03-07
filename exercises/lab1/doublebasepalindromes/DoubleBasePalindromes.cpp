@@ -3,18 +3,47 @@
 //
 
 #include "DoubleBasePalindromes.h"
-#include <string>
-#include <cstdlib>
 #include <iostream>
+#include <cstdint>
+#include <cstdio>
+#include <string>
 
 using namespace std;
 
-bool IsDoublePalindrome(int val)
+bool is_palindrome(string str)
+{
+    int a = str.size();
+    for (int i=0; i<a/2; i++)
+    {
+        if (str[i]!=str[a-i-1])
+            return false;
+    }
+    return true;
+}
+
+uint64_t DoubleBasePalindromes(int max_vaule_exculsive)
+{
+    uint64_t sum = 0;
+    char decimal[100];
+    char binary[100];
+
+    for(int i = 1; i <= max_vaule_exculsive; i++)
+    {
+        itoa(i, decimal, 10);
+        itoa(i, binary, 2);
+
+        if(is_palindrome(string(decimal)) && is_palindrome(string(binary)))
+            sum += i;
+    }
+    return sum;
+}
+
+/*bool IsDoublePalindrome(int val)
 {
     //sprawdza czy to palindrom ten fajny, działa
     string str="";
     int pom = val;
-    string strdec = to_string(val);
+    string strdec = string.to_string(val);
     while (val!=0)
     {
         str += char(val%2+48);
@@ -37,4 +66,4 @@ bool IsDoublePalindrome(int val)
 
     }
     return true;
-}
+}*/

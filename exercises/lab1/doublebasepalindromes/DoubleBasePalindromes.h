@@ -9,6 +9,10 @@
 #include <cstdio>
 #include <cstdlib>
 
-bool IsDoublePalindrome(int val);
+using namespace std;
+
+bool is_palindrome(string str);
+uint64_t DoubleBasePalindromes(int max_vaule_exculsive);
+//bool IsDoublePalindrome(int val);
 
 #endif //JIMP_EXERCISES_DOUBLEBASEPALINDROMES_H

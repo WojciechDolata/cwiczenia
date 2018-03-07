@@ -10,11 +10,5 @@ using namespace std;
 
 int main()
 {
-    //nw co w tej funkcji ma być
-    if(IsDoublePalindrome(585))
-    {
-        cout<<"tak";
-    }
-    else cout<<"nie";
-    return 0;
+    cout << DoubleBasePalindromes(100);
 }
