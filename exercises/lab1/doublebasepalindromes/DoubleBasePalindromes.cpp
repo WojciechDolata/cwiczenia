@@ -20,7 +20,7 @@ bool is_palindrome(string str)
 uint64_t DoubleBasePalindromes(int max_vaule_exculsive)
 {
     uint64_t sum = 0;
-    char decimal[32];
+    char decimal[11];
     char binary[32];
 
     for(int i = 1; i <= max_vaule_exculsive; i++)
