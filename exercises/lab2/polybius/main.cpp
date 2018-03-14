@@ -13,5 +13,6 @@ int main() {
     string test;
     getline(cin, test);
     cout << PolybiusCrypt(test) << endl;
+    cout << PolybiusDecrypt(PolybiusCrypt(test)) << endl;
     return 0;
 }
