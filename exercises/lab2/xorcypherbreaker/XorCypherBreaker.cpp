@@ -13,44 +13,53 @@ std::string XorCypherBreaker(const std::vector<char> &cryptogram,
                              const std::vector<std::string> &dictionary
                              )
 {
-    std::string crypt = std::string(cryptogram.begin(), cryptogram.end());
-    std::string ret;
+    std::string crypt = "";
+    std::string word = "";
+    std::string ret = "";
+    std::string best_ret = "";
+    int maxi = 0;
+    int curr = 0;
 
-    //std::cout << crypt;
+    std::cout << crypt;
 
-    for(int i = 97; i < 123; i++)
-    {
-        for(int j = 97; j < 123; j++)
-        {
-            for(int k = 97; k < 123; k++) {
-                crypt = std::string(cryptogram.begin(), cryptogram.end());
-                //std::cout << crypt << std::endl;
+    for (char i = 'a'; i <= 'z'; i++) {
+        for (char j = 'a'; j <= 'z'; j++) {
+            for (char k = 'a'; k <= 'z'; k++) {
+                char pass[] = {i, j, k};
+                ret += pass[0];
+                ret += pass[1];
+                ret += pass[2];
 
-                for (int l = 0; l < crypt.length(); l++) {
+                for (int l = 0; l < cryptogram.size(); l++) {
 
-                    if (l % 3 == 0) {
-                        crypt[l] = char(int(crypt[l]) ^ i);
+                    crypt += char(cryptogram[l] ^ int(pass[l % 3]));
+
+                    if(isspace(crypt[l]))
+                    {
+                        if (find(dictionary.begin(),dictionary.end(), word) != dictionary.end()) {
+                            curr += 1;
+                        }
+
+                        word = "";
                     }
 
-                    if (l % 3 == 1) {
-                        crypt[l] = char(int(crypt[l]) ^ j);
-                    }
+                    else
+                        word += char(cryptogram[l] ^ int(pass[l % 3]));
 
-                    if (l % 3 == 2) {
-                        crypt[l] = char(int(crypt[l]) ^ k);
-                    }
                 }
-                //std::cout << crypt << std::endl;
 
-                if (find(dictionary.begin(),dictionary.end(), crypt) != dictionary.end())
+                if(curr > maxi)
                 {
-                    ret[0] = char(i);
-                    ret[1] = char(j);
-                    ret[2] = char(k);
-                    return ret;
+                    maxi = curr;
+                    best_ret = ret;
                 }
-            }
+
+                ret = "";
+                curr = 0;
+                crypt = "";
 
             }
         }
+    }
+    return best_ret;
     }
