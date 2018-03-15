@@ -19,8 +19,8 @@ string PolybiusCrypt(string message) {
         if(num >= 65 and num <= 90) {
             num += 32;
         }
-        else if(num < 97 or num > 122) {
-            return 0;
+        else if((num < 97 and num != 32) or num > 122) {
+            return "";
         }
         if (num != 32) {
             crypted = crypted + char( tab[0][num-97]+48) + char( tab[1][num-97]+48);

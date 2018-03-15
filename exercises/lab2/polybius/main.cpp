@@ -12,7 +12,7 @@ using namespace std;
 int main() {
     string test;
     getline(cin, test);
-    cout << PolybiusCrypt(test) << endl;
-    cout << PolybiusDecrypt(PolybiusCrypt(test)) << endl;
+    cout<<test<<endl;
+    cout<<PolybiusCrypt("wiadomosc ze spacjami")<<endl;
     return 0;
 }
