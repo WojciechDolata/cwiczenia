@@ -10,7 +10,7 @@
 
 
 int main(){
-    std::unique_ptr<SmartTree> a=datastructures::CreateLeaf(5);
+    std::unique_ptr<datastructures::SmartTree> a=datastructures::CreateLeaf(5);
     std::cout<<a->value<<std::endl;
     return 0;
 }
