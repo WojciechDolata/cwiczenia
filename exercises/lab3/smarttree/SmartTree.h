@@ -9,9 +9,10 @@
 #include <memory>
 
 class SmartTree{
-    int value;
-    std::unique_ptr<SmartTree> left_subtree;
-    std::unique_ptr<SmartTree> right_subtree;
+    public:
+        int value;
+        std::unique_ptr<SmartTree> left_subtree;
+        std::unique_ptr<SmartTree> right_subtree;
 };
 
 namespace datastructures {
