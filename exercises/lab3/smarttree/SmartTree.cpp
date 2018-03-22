@@ -5,8 +5,10 @@
 #include "SmartTree.h"
 #include <ostream>
 #include <string>
+#include <sstream>
 #include <memory>
 #include <stdio.h>
+#include <iostream>
 
 
 namespace datastructures {
@@ -63,7 +65,35 @@ namespace datastructures {
 
     }
 
-    std::unique_ptr <SmartTree> RestoreTree(const std::string &tree){
+    std::unique_ptr <SmartTree> Deserialization(std::stringstream& ss) {
+        std::string value;
+        ss >> value;
+        if (value == "none") {
+            return nullptr;
+        }
+        else {
+            int value_int;
+            value_int = std::stoi(value);
+            std::unique_ptr <SmartTree> new_node = CreateLeaf(value_int);
+            new_node->left = Deserialization(ss);
+            new_node->right = Deserialization(ss);
+            return new_node;
+        }
+
 
     }
+
+    std::unique_ptr <SmartTree> RestoreTree(const std::string &tree){
+        std::string tmp = tree;
+        for (int i=0; i<tmp.size(); i++) {
+            if(tmp[i]=='[' or tmp[i]==']') {
+                tmp.erase(i,1);
+                i--;
+            }
+        }
+        std::stringstream ss(tmp);
+        return Deserialization(ss);
+    }
+
+
 }
