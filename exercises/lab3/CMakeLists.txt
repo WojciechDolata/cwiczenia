@@ -1,12 +1,5 @@
+project(lab3)
 
-project(tinyurl)
-
-set(HEDEAR_FILES TinyUrl.h)
-set(SOURCE_FILES TinyUrl.cpp)
-
-add_library(libtinyurl STATIC ${SOURCE_FILES})
-target_include_directories(libtinyurl PUBLIC .)
-
-add_executable(tinyurl ${SOURCE_FILES} main.cpp)
-
-target_link_libraries(tinyurl libtinyurl)
+add_subdirectory_if_exists(minimaltimedifference)
+add_subdirectory_if_exists(smarttree)
+add_subdirectory_if_exists(tinyurl)
