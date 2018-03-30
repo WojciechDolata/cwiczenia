@@ -1,0 +1,14 @@
+//
+// Created by dolawojc on 3/30/18.
+//
+
+#ifndef JIMP_EXERCISES_SIMPLETEMPLATEENGINE_H
+#define JIMP_EXERCISES_SIMPLETEMPLATEENGINE_H
+
+
+class SimpleTemplateEngine {
+
+};
+
+
+#endif //JIMP_EXERCISES_SIMPLETEMPLATEENGINE_H
