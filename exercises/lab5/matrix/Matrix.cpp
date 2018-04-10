@@ -154,7 +154,11 @@ std::string Matrix::Print() const
 
         if(!(i % columns_) && i != rows_*columns_)
         {
-            ret += "; ";
+            if(columns_ > 3)
+                ret += "; ";
+
+            else
+                ret += "; ";
         }
 
         else if(i % columns_)
@@ -209,7 +213,23 @@ Matrix Matrix::Sub(const Matrix &matrix) const
 
 Matrix Matrix::Mul(const Matrix &matrix) const
 {
-    Matrix ret {columns_, rows_};
+    if(columns_ != matrix.rows_)
+    {
+        Matrix ret {0, 0};
+        return ret;
+    }
+
+    Matrix ret {matrix.columns_, rows_};
+    std::complex<double> temp = (0.0, 0.0);
+
+    for(int i = 0; i < rows_; ++i)
+        for(int j = 0; j < matrix.columns_; ++j)
+        {
+            temp = (0.0, 0.0);
+            for(int k = 0; k < columns_; ++k)
+                temp += data_[i*columns_+k] * matrix.data_[k*matrix.columns_+j];
+            ret.data_.emplace_back(temp);
+        }
 
     return ret;
 }

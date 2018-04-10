@@ -23,5 +23,9 @@ int main()
 
     Matrix m1{{1.0i, 0., 0.}, {0., 1.0i, 0.}, {0., 0., 1.0i}};
     std::cout << m1.Print();
+
+    std::complex<double> a =(5.0, 7.0);
+    std::complex<double> b =(2.0, 3.0);
+
     return 0;
 }
