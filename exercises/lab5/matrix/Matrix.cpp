@@ -236,7 +236,37 @@ Matrix Matrix::Mul(const Matrix &matrix) const
 
 Matrix Matrix::Pow(int power) const
 {
-    Matrix ret {columns_, rows_};
+    if(columns_ != rows_)
+    {
+        Matrix ret {0, 0};
+        return ret;
+    }
+
+    if(power == 0)
+    {
+        Matrix ret {columns_, rows_};
+
+        for(int i = 0; i < rows_; i++)
+        {
+            for(int j = 0; j < columns_; j++)
+            {
+                if(i == j)
+                    ret.data_.emplace_back(1, 0);
+
+                else
+                    ret.data_.emplace_back(0, 0);
+            }
+        }
+
+        return ret;
+    }
+
+    Matrix ret = *this;
+
+    for(int i = 1; i < power; i++)
+    {
+        ret = ret.Mul(*this);
+    }
 
     return ret;
 }
